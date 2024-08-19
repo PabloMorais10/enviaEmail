@@ -55,3 +55,7 @@ O projeto utiliza várias bibliotecas e ferramentas para seu funcionamento, como
 - **Conexão com o Banco de Dados**: Estabelece a conexão com o banco de dados Firebird e realiza as consultas necessárias.
 - **Envio de E-mails**: Envia e-mails de acordo com as pendências financeiras encontradas e o modo de operação configurado.
 - **Funções Auxiliares**: Inclui funções para criar tabelas auxiliares, formatar datas e preparar o conteúdo dos e-mails.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
