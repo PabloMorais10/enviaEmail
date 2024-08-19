@@ -7,6 +7,16 @@ import locale
 import pytz
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import json
+
+# Função para carregar configurações do arquivo JSON
+def carregar_configuracoes(caminho_arquivo):
+    with open(caminho_arquivo, 'r') as arquivo:
+        return json.load(arquivo)
+
+# Carregar as configurações
+config = carregar_configuracoes('config.json')
+
 
 # Site para hospedar logo do cliente: https://pt-br.imgbb.com/
 
@@ -26,17 +36,17 @@ QtdEmailPorVez = 3
 QtdEmailPorVezAntesVencer = 2
 QtdEmailPorVezDiaVencimento = 2
 NomeEmpresa = 'Dubrasil Soluções'
-smtp_server = 'smtp-mail.outlook.com'
-smtp_port = 587
-smtp_username = 'teste@gmail.com'
-smtp_password = '123465'
+smtp_server = config['email']['smtp_server']
+smtp_port = config['email']['smtp_port']
+smtp_username = config['email']['smtp_username']
+smtp_password = config['email']['smtp_password']
 
 
 # Parâmetros do layout do email
 CaminhoLogo = ''
 AlturaLogo = '169'
 LarguraLogo = '250'
-EmailContato = 'teste@gmail.com'
+EmailContato = 'pablodubrasilsolucoes@gmail.com'
 TelefoneContato = '(34) 3332-8500'
 FraseRepresentante = 'Enviado por TGA Sistemas - www.dubrasilsolucoes.com.br - (34) 3322.8500'
 CorEmail = '#1A1B32'
@@ -61,11 +71,12 @@ EnviaCopiaEmpresa = 'Sim'
 # -------------------------------------------------------------------------
 locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 # Dados do banco de dados
-database_path = 'c:\\tga\\dados\\TGA.FDB'
-user = 'SYSDBA'
-password = 'masterkey'
-server_ip = '192.168.xxx.xxx' 
-port = 3050  # A porta padrão do Firebird é 3050'
+database_path = config['database']['database_path']
+user = config['database']['user']
+password = config['database']['password']
+server_ip = config['database']['server_ip']
+port = config['database']['port']
+
 
 # Conectar ao banco de dados remoto
 dsn = f'{server_ip}/{port}:{database_path}'
